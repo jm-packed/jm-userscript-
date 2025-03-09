@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Fast Link Bypasser (helya API)
+// @name         Jm Userscript 
 // @namespace    jm-bypass-userscript
 // @version      1.3
-// @description  Auto-bypass supported links, copy to clipboard, and redirect instantly.
+// @description  Userscript made by Jm
 // @author       jm
 // @match        *://linkvertise.com/*
 // @match        *://work.ink/*
@@ -33,6 +33,8 @@
 // @grant        GM_openInTab
 // @connect      helya.pylex.xyz
 // @homepageURL  https://discord.gg/S2U9rEaKc3
+// @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm-bypass.user.js
+// @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm-bypass.user.js
 // ==/UserScript==
 
 (function() {
