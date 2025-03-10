@@ -6,6 +6,7 @@
 // @author       jm
 // @match        *://linkvertise.com/*
 // @match        *://work.ink/*
+// @match https://linkvertise.com/1297762/256.3573121659959/dynamic*
 // @match        *://workink.net/*
 // @match        *://r.work.ink/*
 // @match        *://*.*/s?*
