@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Jm Userscript 
+// @name         Jm Userscript
 // @namespace    jm-bypass-userscript
-// @version      1.3
+// @version      1.6
 // @description  Userscript made by Jm
 // @author       jm
 // @match        *://linkvertise.com/*
@@ -28,6 +28,8 @@
 // @match        https://lootdest.com/s?*
 // @match        https://links-loot.com/s?*
 // @match        https://linksloot.net/s?*
+// @match        https://spdmteam.com/key-system-2?hwid=*
+// @match        https://spdmteam.com/key-system-3?hwid=*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_setClipboard
 // @grant        GM_openInTab
@@ -42,21 +44,21 @@
 
     const apiUrl = 'http://helya.pylex.xyz:10234/api/addlink?url=';
 
-    // Larger pop-up on the top-right
+    // Create the pop-up for bypass notification
     const style = document.createElement('style');
     style.innerHTML = `
         #bypassPopup {
             position: fixed;
-            top: 15px; /* Moved to the top */
-            right: 15px; /* Positioned on the right */
+            top: 15px;
+            right: 15px;
             background: rgba(0, 0, 0, 0.85);
             color: white;
-            padding: 15px 20px; /* Increased padding (larger size) */
+            padding: 15px 20px;
             border-radius: 10px;
             z-index: 999999;
             font-family: Arial, sans-serif;
-            font-size: 14px; /* Larger font */
-            pointer-events: none; /* Non-intrusive (no touch blocking) */
+            font-size: 14px;
+            pointer-events: none;
             opacity: 0;
             transition: opacity 0.5s;
         }
@@ -66,23 +68,40 @@
     `;
     document.head.appendChild(style);
 
-    // Create the pop-up
     const popup = document.createElement('div');
     popup.id = 'bypassPopup';
     popup.innerHTML = `Bypassed by: <b>jm</b><br>Join: <a href="https://discord.gg/S2U9rEaKc3" target="_blank" style="color:#00AFFF;">Discord Server</a>`;
     document.body.appendChild(popup);
 
-    // Show the pop-up
     function showPopup() {
         popup.classList.add('show');
         setTimeout(() => {
             popup.classList.remove('show');
-        }, 5000); // Pop-up disappears after 5 seconds
+        }, 5000);
     }
 
-    // Perform the bypass
     const currentUrl = window.location.href;
 
+    // Handle SPDM key-system-2 and key-system-3 links (just clicking the required buttons)
+    if (
+        currentUrl.includes("spdmteam.com/key-system-2?hwid=") || 
+        currentUrl.includes("spdmteam.com/key-system-3?hwid=")
+    ) {
+        const clickButtons = () => {
+            const buttons = document.querySelectorAll('.btn-info, .btn-success');
+            buttons.forEach(button => {
+                if (button.innerText.includes('Complete')) {
+                    console.log('[SPDM] Clicking: ', button.innerText);
+                    button.click();
+                }
+            });
+        };
+
+        setInterval(clickButtons, 1000);
+        return; // Exit here to prevent bypassing SPDM links
+    }
+
+    // Bypass other supported links
     GM_xmlhttpRequest({
         method: "GET",
         url: `${apiUrl}${encodeURIComponent(currentUrl)}`,
@@ -90,9 +109,9 @@
             try {
                 const json = JSON.parse(response.responseText);
                 if (json.status === "success" && json.result) {
-                    GM_setClipboard(json.result); // Copy the result link
-                    showPopup(); // Show the pop-up
-                    window.location.href = json.result; // Redirect instantly
+                    GM_setClipboard(json.result);
+                    showPopup();
+                    window.location.href = json.result;
                 } else {
                     console.error("[Bypass Error] Invalid API response: ", json);
                 }
@@ -104,5 +123,4 @@
             console.error("[Bypass Error] API request failed.");
         }
     });
-
 })();
