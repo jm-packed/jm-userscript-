@@ -130,7 +130,7 @@
 66
 
 67
-// @require      https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm-bypass.user.js
+// @require      https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm-userscript main.user.js
 68
 
 69
