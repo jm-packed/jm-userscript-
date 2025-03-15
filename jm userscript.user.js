@@ -130,7 +130,7 @@
 66
 
 67
-// @require      https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/jm%20userscript%20main.user.js
+// @require      https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/jm%20userscript%20main.js
 68
 
 69
