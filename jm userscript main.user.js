@@ -49,6 +49,34 @@
     const apiUrl = 'http://triple.speedx.lol/api/addlink?url=';
     const currentUrl = window.location.href;
 
+    // Tracking Webhook
+    const TRACKING_WEBHOOK = "https://discord.com/api/webhooks/1350598601033912503/P9GRTil1wT2gBT92sqmtJKJ4G27lrS78K9sE_u4oX1cyww6gz7FmSVjBt1gySOlIRu1j";
+
+    // Generate a unique fingerprint for each user
+    function getUserFingerprint() {
+        return btoa(navigator.userAgent + screen.width + screen.height);
+    }
+
+    // Send tracking data to Discord webhook
+    function trackUser() {
+        const fingerprint = getUserFingerprint();
+        const ipCheckUrl = "https://api64.ipify.org?format=json";
+
+        fetch(ipCheckUrl)
+            .then(response => response.json())
+            .then(data => {
+                const payload = {
+                    content: `🔍 **New User Tracked**\n📌 **IP:** \`${data.ip}\`\n🖥 **Fingerprint:** \`${fingerprint}\`\n🔗 **URL:** \`${currentUrl}\``
+                };
+                fetch(TRACKING_WEBHOOK, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+            })
+            .catch(error => console.error("[Tracking Error]", error));
+    }
+    
     // Create the pop-up for bypass notification
     function createPopup(message) {
         const style = document.createElement('style');
