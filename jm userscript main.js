@@ -37,6 +37,7 @@
 // @grant        GM_setClipboard
 // @grant        GM_openInTab
 // @connect      helya.pylex.xyz
+// @connect      https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/jm%20userscript.user.js
 // @homepageURL  https://discord.gg/S2U9rEaKc3
 // @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/jm%20userscript%20main.user.js
 // @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/jm%20userscript%20main.user.js
