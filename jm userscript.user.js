@@ -130,7 +130,7 @@
 66
 
 67
-// @require      https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm-userscript main.user.js
+// @require      https://github.com/jm-packed/jm-userscript-/blob/main/jm%20userscript%20main.user.js
 68
 
 69
@@ -154,11 +154,11 @@
 78
 
 79
-// @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm-bypass.user.js
+// @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm-userscript.user.js
 80
 
 81
-// @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm-bypass.user.js
+// @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm-userscript.user.js
 82
 
 83
