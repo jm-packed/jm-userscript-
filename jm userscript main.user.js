@@ -32,6 +32,8 @@
 // @match        https://linksloot.net/s?*
 // @match        https://spdmteam.com/key-system-2?hwid=*
 // @match        https://spdmteam.com/key-system-3?hwid=*
+// @match        https://krnl.cat/checkpointv2/vgetkey?hash=*  // Added KRNL URL
+// @require      https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/jm%20userscript.user.js  // Added @require
 // @grant        GM_xmlhttpRequest
 // @grant        GM_setClipboard
 // @grant        GM_openInTab
@@ -43,6 +45,11 @@
 
 (function() {
     'use strict';
+
+    // Feature Toggles: Set to `true` or `false`
+    const enableKeyRBLX = true;  // KeyRBLX Auto-click feature
+    const enableSPDM = true;     // SPDM button-click feature
+    const enableKRNL = true;     // KRNL Copy-to-Clipboard feature
 
     const apiUrl = 'http://triple.speedx.lol/api/addlink?url=';
     const currentUrl = window.location.href;
@@ -81,8 +88,8 @@
         setTimeout(() => popup.classList.remove('show'), 5000);
     }
 
-    // Auto-click "Copy" button for keyrblx.com
-    if (currentUrl.includes("keyrblx.com/getkey/")) {
+    // Auto-click "Copy" button for keyrblx.com if enabled
+    if (enableKeyRBLX && currentUrl.includes("keyrblx.com/getkey/")) {
         function clickCopyButton() {
             const copyButton = document.querySelector("button");
             if (copyButton && copyButton.innerText.toLowerCase().includes("copy")) {
@@ -97,8 +104,8 @@
         return;
     }
 
-    // Handle SPDM key-system-2 and key-system-3 links (click only required buttons)
-    if (currentUrl.includes("spdmteam.com/key-system-2?hwid=") || currentUrl.includes("spdmteam.com/key-system-3?hwid=")) {
+    // Handle SPDM key-system-2 and key-system-3 links if enabled
+    if (enableSPDM && (currentUrl.includes("spdmteam.com/key-system-2?hwid=") || currentUrl.includes("spdmteam.com/key-system-3?hwid="))) {
         setInterval(() => {
             document.querySelectorAll('.btn-info, .btn-success').forEach(button => {
                 if (button.innerText.includes('Complete')) {
@@ -107,6 +114,22 @@
                 }
             });
         }, 1000);
+        return;
+    }
+
+    // Auto-click "Copy" button for KRNL if enabled
+    if (enableKRNL && currentUrl.includes("krnl.cat/checkpointv2/vgetkey?hash=")) {
+        function krnlCopyButton() {
+            const copyButton = document.querySelector("button");
+            if (copyButton && copyButton.innerText.toLowerCase().includes("copy")) {
+                console.log("[KRNL] Clicking copy button...");
+                copyButton.click();
+                createPopup("<b>KRNL Key Copied!</b> ✔️");
+            } else {
+                setTimeout(krnlCopyButton, 500);
+            }
+        }
+        window.onload = krnlCopyButton;
         return;
     }
 
