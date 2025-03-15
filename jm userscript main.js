@@ -12,6 +12,7 @@
 // @match        *://*.*/s?*
 // @match        *://keyrblx.com/*
 // @match        *://rekonise.com/*
+// @match        *://rekonise.com/*/*
 // @match        *://mobile.codex.lol/*
 // @match        *://pandadevelopment.net/getkey*
 // @match        *://ads.luarmor.net/get_key*
