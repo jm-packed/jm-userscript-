@@ -25,12 +25,14 @@
 // @match        *://linkvertise.com/*
 14
 
+// @match        *://auth.platorelay.com/*
+
 15
 // @match        *://work.ink/*
 16
 
 17
-// @match        https://linkvertise.com/*/*
+// @match        *://linkvertise.com/*/*
 18
 
 // @match        *://rekonise.com/*
@@ -48,6 +50,8 @@
 23
 // @match        *://*.*/s?*
 24
+
+// @match        *://keyrblx.com/*/*
 
 25
 // @match        *://keyrblx.com/*
