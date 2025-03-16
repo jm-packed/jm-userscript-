@@ -21,7 +21,8 @@
 // @grant        GM_xmlhttpRequest
 // @grant        GM_setClipboard
 // @grant        GM_openInTab
-// @connect      helya.pylex.xyz
+// @connect      auth.platoboost.net
+// @connect      authplatorelay.com
 // @homepageURL  https://discord.gg/S2U9rEaKc3
 // @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm%20userscript.user.js
 // @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm%20userscript.user.js
