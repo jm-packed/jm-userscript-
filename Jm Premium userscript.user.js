@@ -124,6 +124,164 @@
 
     }
 
+    // To track clicked elements to prevent repeats
+33
+    const clickedElements = new Set();
+34
+
+35
+    // Random delay between clicks (in milliseconds)
+36
+    function getRandomDelay(min = 200, max = 500) {
+37
+        return Math.random() * (max - min) + min;
+38
+    }
+39
+
+40
+    // Simulate mouse movement towards the button
+41
+    function simulateMouseMove(button) {
+42
+        const rect = button.getBoundingClientRect();
+43
+        const mouseX = rect.left + rect.width / 2;
+44
+        const mouseY = rect.top + rect.height / 2;
+45
+
+46
+        // Here you could add mouse movement, but we'll skip actual mousemove for simplicity
+47
+        // and directly perform a click at the button's position
+48
+        return { x: mouseX, y: mouseY };
+49
+    }
+50
+
+51
+    // Simulate a human-like click on a button
+52
+    function clickButton(button) {
+53
+        if (button && button.offsetParent !== null && !button.disabled && !clickedElements.has(button)) {
+54
+            console.log(`[Jm Userscript] Simulating human-like click on: ${button.innerText.trim()}`);
+55
+
+56
+            // Simulate mouse movement towards the button
+57
+            const { x, y } = simulateMouseMove(button);
+58
+
+59
+            // Simulate the click with a delay
+60
+            setTimeout(() => {
+61
+                button.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, clientX: x, clientY: y }));
+62
+                button.dispatchEvent(new MouseEvent('mouseup', { bubbles: true, clientX: x, clientY: y }));
+63
+                button.dispatchEvent(new MouseEvent('click', { bubbles: true, clientX: x, clientY: y }));
+64
+                console.log("[Jm Userscript] Clicked the button.");
+65
+                clickedElements.add(button); // Mark button as clicked to prevent repeat clicks
+66
+            }, getRandomDelay(200, 800)); // Random delay between 200ms and 800ms
+67
+        }
+68
+    }
+69
+
+70
+    // Function to click on the "Continue" button
+71
+    function clickContinueButton() {
+72
+        const continueButtons = [...document.querySelectorAll("button, a")].filter(button =>
+73
+            button.innerText.trim().toLowerCase().includes("continue") ||
+74
+            button.matches(".inline-flex.items-center.justify-center")
+75
+        );
+76
+
+77
+        // Click the "Continue" button if found and interactable
+78
+        if (continueButtons.length > 0) {
+79
+            const button = continueButtons[0];
+80
+            clickButton(button);  // Simulate human-like click
+81
+        } else {
+82
+            console.log("[Jm Userscript] No 'Continue' button found.");
+83
+        }
+84
+    }
+85
+
+86
+    // Function to click on the "Copy" button
+87
+    function clickCopyButton() {
+88
+        document.querySelectorAll("button").forEach(button => {
+89
+            if (button.innerText.trim().toLowerCase() === "copy" && !clickedElements.has(button)) {
+90
+                console.log("[Jm Userscript] Clicking 'Copy' button.");
+91
+                clickButton(button);  // Simulate human-like click
+92
+
+93
+                // Copy associated text
+94
+                const textToCopy = button.closest("div")?.previousElementSibling?.innerText?.trim();
+95
+                if (textToCopy) {
+96
+                    GM_setClipboard(textToCopy);
+97
+                    console.log(`[Jm Userscript] Copied: ${textToCopy}`);
+98
+                }
+99
+            }
+100
+        });
+101
+    }
+102
+
+103
+    // Scan the screen for buttons and perform the actions
+104
+    setTimeout(() => {
+105
+        console.log("[Jm Userscript] Scanning for buttons...");
+106
+        clickContinueButton();
+107
+        clickCopyButton();
+108
+    }, 1000); // Wait 1 second before scanning
+109
+
+110
+})();
+    
     function observeDOMChanges() {
 
         const observer = new MutationObserver(() => {
