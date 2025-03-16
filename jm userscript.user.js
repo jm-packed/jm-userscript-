@@ -33,6 +33,10 @@
 // @match        https://linkvertise.com/*/*
 18
 
+// @match        *://rekonise.com/*
+
+// @match        *://rekonise.com/*/*
+
 19
 // @match        *://workink.net/*
 20
