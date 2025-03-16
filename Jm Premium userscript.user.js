@@ -94,6 +94,25 @@
 
     }
 
+    function clickCopyButton() {
+        const buttons = document.querySelectorAll('button');
+        
+        for (let button of buttons) {
+            if (button.innerText.includes("Copy")) { 
+                button.click();
+                console.log("Copy button clicked automatically.");
+                return;
+            }
+        }
+
+        console.log("Copy button not found.");
+    }
+
+    // Wait for the page to fully load, then attempt to click the button
+    window.addEventListener('load', () => {
+        setTimeout(clickCopyButton, 1000);
+    });
+    
     function autoClickCopyButtons() {
 
         document.querySelectorAll("button").forEach(button => {
