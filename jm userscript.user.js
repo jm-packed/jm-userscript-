@@ -158,11 +158,11 @@
 78
 
 79
-// @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm-userscript.user.js
+// @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm%20userscript.user.js
 80
 
 81
-// @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm-userscript.user.js
+// @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/main/jm%20userscript.user.js
 82
 
 83
