@@ -97,14 +97,6 @@
 // @homepageURL  https://discord.gg/S2U9rEaKc3
 50
 
-51
-// @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/jm%20userscript%20main.user.js
-52
-
-53
-// @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/jm%20userscript%20main.user.js
-54
-
 55
 // ==/UserScript==
 56
