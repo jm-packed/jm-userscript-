@@ -36,6 +36,8 @@
 
 // @match      https://auth.platoboost.net/*
 
+// @require    https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/Delta%20autocopy.js
+
 // @grant        GM_xmlhttpRequest
 
 // @grant        GM_setClipboard
@@ -50,9 +52,9 @@
 
 // @homepageURL  https://discord.gg/S2U9rEaKc3
 
-// @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/jm%20userscript%20main.user.js
+// @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/Jm%20Premium%20userscript.user.js
 
-// @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/jm%20userscript%20main.user.js
+// @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/Jm%20Premium%20userscript.user.js
 
 // ==/UserScript==
 
