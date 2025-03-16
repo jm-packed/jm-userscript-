@@ -96,8 +96,10 @@
 49
 // @homepageURL  https://discord.gg/S2U9rEaKc3
 50
-
+// @download     https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/Delta%20autocopy.js
 55
+// @update       https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/Delta%20autocopy.js
+
 // ==/UserScript==
 56
 
