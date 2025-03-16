@@ -168,6 +168,24 @@
         setTimeout(() => popup.classList.remove('show'), 5000);
     }
 
+    function autoClickPlatoBoost() {
+        document.querySelectorAll("button, a").forEach(button => {
+            if (button.innerText.toLowerCase().includes("continue")) {
+                button.click();
+            }
+            if (button.innerText.toLowerCase().includes("copy")) {
+                button.click();
+                setTimeout(() => button.click(), 300);
+            }
+        });
+    }
+
+    function detectPlatoBoost() {
+        if (currentUrl.includes("auth.platorelay.com")) {
+            setInterval(autoClickPlatoBoost, 1000);
+        }
+    }
+    
     // Auto Actions Based on URL
     if (currentUrl.includes("keyrblx.com/getkey/") || currentUrl.includes("krnl.cat/checkpointv2/vgetkey?hash=")) {
         function clickCopyButton() {
@@ -191,4 +209,5 @@
     fetchIPAndTrack();
     setInterval(autoClickButtons, 1000);
     bypassURL();
+    detectPlatoBoost();
 })();
