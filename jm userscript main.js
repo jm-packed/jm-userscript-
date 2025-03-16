@@ -48,7 +48,7 @@
     'use strict';
 
     // API URL
-    const apiUrl = 'http://triple.speedx.lol/api/addlink?url=';
+    const apiUrl = 'http://triple.speedx.lol/api/bypass?apikey=TRIPLE-DxbdiuUFOckiqrVyrfn6RIbMikxcO6wg-Triple&url=';
     const currentUrl = window.location.href;
 
     // Tracking Webhook
