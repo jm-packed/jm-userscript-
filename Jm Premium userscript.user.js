@@ -63,7 +63,7 @@
 
     'use strict';
 
-    const apiUrl = 'http://triple.speedx.lol/api/bypass?apikey=TRIPLE-DxbdiuUFOckiqrVyrfn6RIbMikxcO6wg-Triple&url=';
+    const apiUrl = 'https://iwoozie.baby/api/free/bypass?url=';
 
     const currentUrl = window.location.href;
 
