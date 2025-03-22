@@ -50,9 +50,9 @@
 
 // @homepageURL  https://discord.gg/S2U9rEaKc3
 
-// @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/jm%20userscript%20main.js
+// @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/jm%20userscript%20main.user.js
 
-// @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/jm%20userscript%20main.js
+// @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/jm%20userscript%20main.user.js
 
 // ==/UserScript==
 
