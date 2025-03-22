@@ -35,7 +35,90 @@
 // @match      https://auth.platorelay.com/*
 
 // @match      https://auth.platoboost.net/*
+// @match        https://linkvertise.com/376138/arceus-x-neo-key-system-1?o=sharing*
+9
+// @match        https://linkvertise.com/*/*
+10
+// @match        https://rekonise.com/*
+11
+// @match        https://mboost.me/a/*
+12
+// @match        https://loot-link.com/s?*
+13
+// @match        https://loot-links.com/s?*
+14
+// @match        https://lootlink.org/s?*
+15
+// @match        https://lootlinks.co/s?*
+16
+// @match        https://lootdest.info/s?*
+17
+// @match        https://lootdest.org/s?*
+18
+// @match        https://mobile.codex.lol/*
+19
+// @match        https://pandadevelopment.net/getkey?*
+20
+// @match        https://lootdest.com/s?*
+21
+// @match        https://links-loot.com/s?*
+22
+// @match        https://linksloot.net/s?*
+23
+// @match        https://spdmteam.com/key-system*
+24
+// @match       https://loot-link.com/s?*
+25
+// @match       https://loot-links.com/s?*
+26
+// @match       https://lootlink.org/s?*
+27
+// @match       https://lootlinks.co/s?*
+28
+// @match       https://lootdest.info/s?*
+29
+// @match       https://lootdest.org/s?*
+30
+// @match       https://lootdest.com/s?*
+31
+// @match       https://links-loot.com/s?*
+32
+// @match       https://linksloot.net/s?*
+33
+// @match       https://flux.li/android/external/start.php?HWID=*
+34
+// @require     https://greasyfork.org/scripts/464929-module-jquery-xiaoying/code/module_jquery_XiaoYing.js
+35
+// @require     https://greasyfork.org/scripts/464780-global-module/code/global_module.js
+36
+// @require     https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js
+39
+// @grant        GM_xmlhttpRequest
+41
+// @grant        GM_notification
+42
+// @grant        GM_openInTab
+43
 
+44
+// @license      Jm
+45
+// @connect      linkvertise.com
+46
+// @connect      short-jambo.com
+47
+// @connect      api.codex.lol
+48
+// @connect      cdn.jsdelivr.net
+49
+// @connect      fluxteam.net
+50
+// @connect      spdmteam.com
+51
+// @connect      api.keyrblx.com
+52
+// @connect      pandadevelopment.net
+    
 // @grant        GM_xmlhttpRequest
 
 // @grant        GM_setClipboard
