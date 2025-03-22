@@ -4,7 +4,7 @@
 
 // @namespace    jm-bypass-userscript
 
-// @version      2.5
+// @version      2.6
 
 // @description  Userscript made by Jm
 
@@ -19,8 +19,6 @@
 // @match        *://keyrblx.com/*
 
 // @match        *://rekonise.com/*
-
-// @match        *://mobile.codex.lol/*
 
 // @match        *://pandadevelopment.net/getkey*
 
