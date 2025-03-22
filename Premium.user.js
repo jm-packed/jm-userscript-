@@ -48,9 +48,9 @@
 
 // @homepageURL  https://discord.gg/S2U9rEaKc3
 
-// @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/Jm%20Userscript%20Premium.user.js
+// @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/Premium.user.js
 
-// @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/Jm%20Userscript%20Premium.user.js
+// @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/Premium.user.js
 
 // ==/UserScript==
 
