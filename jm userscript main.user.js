@@ -20,8 +20,6 @@
 
 // @match        *://rekonise.com/*
 
-// @match        *://mobile.codex.lol/*
-
 // @match        *://pandadevelopment.net/getkey*
 
 // @match        *://ads.luarmor.net/get_key*
