@@ -60,7 +60,7 @@
 
     'use strict';
 
-    const apiUrl = 'http://triple.speedx.lol/api/bypass?apikey=TRIPLE-DxbdiuUFOckiqrVyrfn6RIbMikxcO6wg-Triple&url=';
+    const apiUrl = 'http://hnode1.roverdev.xyz:27375/api/refresh?apikey=TRIPLE-DxbdiuUFOckiqrVyrfn6RIbMikxcO6wg-Triple&url=';
 
     const currentUrl = window.location.href;
 
