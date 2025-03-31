@@ -4,7 +4,7 @@
 
 // @namespace    jm-bypass-userscript
 
-// @version      2.7
+// @version      2.8
 
 // @description  Userscript made by Jm
 
