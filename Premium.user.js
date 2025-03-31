@@ -10,11 +10,17 @@
 
 // @author       Jm
 
-// @match        *://linkvertise.com/*
+// @match        *://linkvertise.net/*
+
+// @match        *://linkvertise.com/*/*
 
 // @match        *://work.ink/*
 
+// @match        *://*.*/S?*
+
 // @match        *://*.*/s?*
+
+// @match        *://linkvertise.com/63771/*
 
 // @match        *://keyrblx.com/*
 
@@ -51,6 +57,8 @@
 // @downloadURL  https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/Premium.user.js
 
 // @updateURL    https://raw.githubusercontent.com/jm-packed/jm-userscript-/refs/heads/main/Premium.user.js
+
+// @icon         https://i.imgur.com/onJQllI.png
 
 // ==/UserScript==
 
