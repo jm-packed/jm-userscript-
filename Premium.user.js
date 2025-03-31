@@ -300,7 +300,122 @@
 
     }
 
-    
+    // Function to create a notification pop-up at the top right corner (for general key copy)
+function createTopRightPopup(message) {
+    const style = document.createElement('style');
+    style.innerHTML = `
+        #topRightPopup {
+            position: fixed; top: 15px; right: 15px;
+            background: rgba(0, 0, 0, 0.85); color: white;
+            padding: 15px 20px; border-radius: 10px;
+            z-index: 999999; font-family: Arial, sans-serif;
+            font-size: 14px; pointer-events: none; opacity: 0;
+            transition: opacity 0.5s;
+        }
+        #topRightPopup.show { opacity: 1; }
+        #topRightPopup a { color: #00AFFF; text-decoration: none; }
+    `;
+    document.head.appendChild(style);
+
+    const popup = document.createElement('div');
+    popup.id = 'topRightPopup';
+    popup.innerHTML = message;
+    document.body.appendChild(popup);
+
+    popup.classList.add('show');
+    setTimeout(() => popup.classList.remove('show'), 5000);
+}
+
+// Full-screen pop-up for flux.li key copied notification
+function createFullScreenPopup(message) {
+    const style = document.createElement('style');
+    style.innerHTML = `
+        #fullScreenPopup {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9); color: white; display: flex;
+            align-items: center; justify-content: center; text-align: center;
+            font-size: 24px; font-family: Arial, sans-serif; z-index: 999999;
+        }
+        #fullScreenPopup a { color: #00AFFF; text-decoration: none; font-size: 20px; }
+    `;
+    document.head.appendChild(style);
+
+    const popup = document.createElement('div');
+    popup.id = 'fullScreenPopup';
+    popup.innerHTML = `${message}<br><br><a href="#" id="dismissPopup">Dismiss</a>`;
+    document.body.appendChild(popup);
+
+    document.getElementById("dismissPopup").addEventListener("click", () => {
+        popup.remove();
+    });
+}
+
+// Flux.li bypass handling - full-screen pop-up for key copied
+function bypassFluxLi() {
+    if (window.location.href.includes("flux.li")) {
+        GM_xmlhttpRequest({
+            method: "GET",
+            url: `${apiUrl}${encodeURIComponent(window.location.href)}`,
+            onload: function(response) {
+                try {
+                    const json = JSON.parse(response.responseText);
+                    if (json.status === "success" && json.result) {
+                        GM_setClipboard(json.result);
+                        console.log(`[Flux.li Bypass] Key copied: ${json.result}`);
+
+                        // Show full-screen pop-up for flux.li key copy
+                        createFullScreenPopup('<b>Key Copied Successfully!</b> ✔️<br>Join: <a href="https://discord.gg/S2U9rEaKc3" target="_blank">Discord Server</a>');
+                    } else {
+                        console.error("[Flux.li Bypass] Invalid API response: ", json);
+                    }
+                } catch (e) {
+                    console.error("[Flux.li Bypass] Exception: ", e);
+                }
+            },
+            onerror: function() {
+                console.error("[Flux.li Bypass] API request failed.");
+            }
+        });
+
+        return; // Prevents redirection
+    }
+}
+
+// Function to handle copying general keys with a top-right corner notification
+function autoClickCopyButtons() {
+    document.querySelectorAll("button").forEach(button => {
+        if (button.innerText.trim().toLowerCase() === "copy") {
+            console.log("[Jm Userscript] Clicking 'Copy' button.");
+            button.click();
+
+            // Copy the associated text if available
+            const textToCopy = button.parentElement?.previousElementSibling?.innerText?.trim();
+            if (textToCopy) {
+                GM_setClipboard(textToCopy);
+                console.log(`[Jm Userscript] Copied text: ${textToCopy}`);
+
+                // Show a smaller notification at the top-right corner
+                createTopRightPopup('<b>Copied Successfully!</b> ✔️<br>Join: <a href="https://discord.gg/S2U9rEaKc3" target="_blank">Discord Server</a>');
+            }
+
+            setTimeout(() => button.click(), 300);
+        }
+    });
+}
+
+// Function to notify the user that the userscript has been loaded
+function notifyScriptLoaded() {
+    createTopRightPopup('<b>Jm Userscript Loaded</b> ✔️<br>Join: <a href="https://discord.gg/S2U9rEaKc3" target="_blank">Discord Server</a>');
+}
+
+// Call the notification function when the userscript is loaded
+notifyScriptLoaded();
+
+// Call bypassFluxLi when on Flux.li
+bypassFluxLi();
+
+// General auto-click and copy button function
+autoClickCopyButtons();
 
     setInterval(autoClickButtons, 1000);
 
