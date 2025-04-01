@@ -4,7 +4,7 @@
 
 // @namespace    jm-bypass-userscript
 
-// @version      2.9
+// @version      3.0
 
 // @description  Userscript made by Jm
 
@@ -421,6 +421,16 @@ const WAIT_TIME = 10000; // Default wait time in milliseconds (10s)
 
     if (window.location.hostname === "ads.luarmor.net" && window.location.pathname.startsWith("/get_key")) {
         console.log("[Jm Userscript] Checking bypass method...");
+
+        // Function to detect CAPTCHA
+        function isCaptchaPresent() {
+            return !!document.querySelector("iframe[src*='captcha'], div.g-recaptcha, .h-captcha");
+        }
+
+        if (isCaptchaPresent()) {
+            console.log("[Jm Userscript] CAPTCHA detected! Manual verification required.");
+            return;
+        }
 
         if (window.location.search.includes("api_bypass")) {
             console.log(`[Jm Userscript] Waiting ${WAIT_TIME / 1000} seconds before API bypass...`);
