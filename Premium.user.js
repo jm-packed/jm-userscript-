@@ -4,7 +4,7 @@
 
 // @namespace    jm-bypass-userscript
 
-// @version      2.8
+// @version      2.9
 
 // @description  Userscript made by Jm
 
@@ -417,6 +417,30 @@ bypassFluxLi();
 // General auto-click and copy button function
 autoClickCopyButtons();
 
+const WAIT_TIME = 10000; // Default wait time in milliseconds (10s)
+
+    if (window.location.hostname === "ads.luarmor.net" && window.location.pathname.startsWith("/get_key")) {
+        console.log("[Jm Userscript] Checking bypass method...");
+
+        if (window.location.search.includes("api_bypass")) {
+            console.log(`[Jm Userscript] Waiting ${WAIT_TIME / 1000} seconds before API bypass...`);
+            setTimeout(() => {
+                console.log("[Jm Userscript] Proceeding with API bypass...");
+                // Insert API bypass logic here
+            }, WAIT_TIME);
+        } else {
+            console.log("[Jm Userscript] Clicking Start button instantly...");
+
+            const startButton = document.querySelector("button.btn-success"); // Adjust selector if needed
+            if (startButton) {
+                startButton.click();
+                console.log("[Jm Userscript] Start button clicked!");
+            } else {
+                console.log("[Jm Userscript] Start button not found!");
+            }
+        }
+    }
+    
     setInterval(autoClickButtons, 1000);
 
     bypassURL();
